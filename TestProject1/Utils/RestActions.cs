@@ -5,8 +5,7 @@ namespace TestProject1.Utils
         public RestClient client;
         public RestRequest request;
         public RestResponse response;
-
-       const string URL = "https://reqres.in/api";
+        public const string URL = Constants.baseURL;
 
         public void setBaseURL(){
             client = new RestClient();

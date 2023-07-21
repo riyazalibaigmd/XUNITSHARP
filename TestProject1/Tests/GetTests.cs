@@ -7,8 +7,8 @@ namespace TestProject1
 {   
     public class GetTests
     {
-        public static string GetJsonData = "\\TestData\\Get.json";
-        public static IEnumerable<object[]> _testData = TestDataHelper.GetTestData(GetJsonData);
+        public static string data = Constants.GetData;
+        public static IEnumerable<object[]> _testData = TestDataHelper.GetTestData(data);
         RestActions restActions = new RestActions();
 
         [Theory]

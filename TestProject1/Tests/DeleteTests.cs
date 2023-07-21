@@ -7,8 +7,8 @@ namespace TestProject1
 {   
     public class DeleteTests
     {
-        public static string GetJsonData = "\\TestData\\Delete.json";
-        public static IEnumerable<object[]> _testData = TestDataHelper.GetTestData(GetJsonData);
+        public static string data = Constants.DeleteData;
+        public static IEnumerable<object[]> _testData = TestDataHelper.GetTestData(data);
         RestActions restActions = new RestActions();
 
         [Theory]
