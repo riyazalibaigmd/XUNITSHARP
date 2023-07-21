@@ -111,6 +111,10 @@ namespace TestProject1.Utils
             Assert.Equal(code, response.StatusCode);
         }
 
+        public object respContent(){
+            return response.Content;
+        }
+
         public void validateRespFields(string name, string job){
             dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
             var respName = jsonResponse.name.ToString();
