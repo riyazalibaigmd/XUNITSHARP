@@ -6,8 +6,18 @@ namespace TestProject1.Utils
     public class TestData
     {
         public string param1 { get; set; }
-        public string param2 { get; set; }
+        
+        public string param2 { get; set; } = "unknown";
+        
         public int code { get; set; }
+
+        public string email { get; set; } = "unknown";
+
+        public string password { get; set; } = "unknown";
+
+        public string name { get; set; } = "unknown";
+
+        public string job { get; set; } = "unknown";
     }
 
     public static class TestDataHelper

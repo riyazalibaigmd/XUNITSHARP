@@ -1,8 +1,8 @@
 [
     {
-      "param1": "users",
-      "param2": "2",
-      "code": 200
+        "param1": "users",
+        "param2": "2",
+        "code": 200
     },
     {
         "param1": "users",

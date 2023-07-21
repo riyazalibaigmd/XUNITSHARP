@@ -1,0 +1,26 @@
+[
+    {
+        "param1": "register",
+        "email": "eve.holt@reqres.in",
+        "password": "pistol",
+        "code": 200
+    },
+    {
+        "param1": "register",
+        "email": "sydney@fife",
+        "password": "",
+        "code": 400
+    },
+    {
+        "param1": "login",
+        "email": "eve.holt@reqres.in",
+        "password": "cityslicka",
+        "code": 200
+    },
+    {
+        "param1": "login",
+        "email": "peter@klaven",
+        "password": "",
+        "code": 400
+    }
+]
