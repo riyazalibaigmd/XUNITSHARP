@@ -7,7 +7,6 @@ namespace TestProject1.Utils
         public RestResponse response;
 
        const string URL = "https://reqres.in/api";
-       const string getSingleUser="/{users}/{userID}";
 
         public void setBaseURL(){
             client = new RestClient();
