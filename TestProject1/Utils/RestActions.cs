@@ -2,121 +2,120 @@ namespace TestProject1.Utils
 {
     public class RestActions
     {
-        public RestClient client;
-        public RestRequest request;
-        public RestResponse response;
-        public const string URL = Constants.baseURL;
+        private RestClient httpClient;
+        private RestRequest httpRequest;
+        private RestResponse httpResponse;
 
-        public void setBaseURL(){
-            client = new RestClient();
-            request = new RestRequest(URL);
+        public void SetBaseURL(){
+            httpClient = new RestClient();
+            httpRequest = new RestRequest(Constants.BaseURL);
         }
 
-         public void setBaseURL(string pathParam){
-            client = new RestClient(URL);
-            request = new RestRequest(pathParam);
+         public void SetBaseURL(string pathParam){
+            httpClient = new RestClient(Constants.BaseURL);
+            httpRequest = new RestRequest(pathParam);
         }
 
-        public void setBaseURL(string param1, string param2){
-            client = new RestClient();
-            request = new RestRequest($"{URL}/{param1}/{param2}");
+        public void SetBaseURL(string param1, string param2){
+            httpClient = new RestClient();
+            httpRequest = new RestRequest($"{Constants.BaseURL}/{param1}/{param2}");
         }
 
         public void AddUrlSegment(string name, string value){
-             request.AddUrlSegment(name, value);
+             httpRequest.AddUrlSegment(name, value);
         }
 
         public void AddHeader(string name, string value){
-            request.AddHeader(name, value);
+            httpRequest.AddHeader(name, value);
         }
 
         public void AddOrUpdateHeader(string name, string value){
-            request.AddOrUpdateHeader(name, value);
+            httpRequest.AddOrUpdateHeader(name, value);
         }
 
         public void AddParameter(string name, string value){
-            request.AddParameter(name, value);
+            httpRequest.AddParameter(name, value);
         }
 
         public void AddQueryParameter(string name, string value){
-            request.AddQueryParameter(name, value);
+            httpRequest.AddQueryParameter(name, value);
         }
 
         public void AddCookie(string name, string value, string path, string domain){
-            request.AddCookie(name, value, path, domain);
+            httpRequest.AddCookie(name, value, path, domain);
         }
 
         public void AddBody(object param){
-            request.RequestFormat = RestSharp.DataFormat.Json;
-            request.AddBody(param);
+            httpRequest.RequestFormat = RestSharp.DataFormat.Json;
+            httpRequest.AddBody(param);
         }
 
        public void AddJsonBody(object param){
-            request.RequestFormat = RestSharp.DataFormat.Json;
-            request.AddJsonBody(param);
+            httpRequest.RequestFormat = RestSharp.DataFormat.Json;
+            httpRequest.AddJsonBody(param);
         }
 
         public void AddJsonBody(object param, string contentType){
-            request.RequestFormat = RestSharp.DataFormat.Json;
-            request.AddJsonBody(param, contentType);
+            httpRequest.RequestFormat = RestSharp.DataFormat.Json;
+            httpRequest.AddJsonBody(param, contentType);
         }
 
         public void AddFile(string name, string path, string contentType){
-            request.AddFile(name, path, contentType);
+            httpRequest.AddFile(name, path, contentType);
         }
 
         public void AddFile(string name, byte[] bytes, string path, string contentType){
-            request.AddFile(name, bytes, path, contentType);
+            httpRequest.AddFile(name, bytes, path, contentType);
         }
 
         public void AddFileBytes(string name, byte[] bytes, string path, string contentType){
-            request.AddFile(name, bytes, path, contentType);
+            httpRequest.AddFile(name, bytes, path, contentType);
         }
            
         public void GetCall(){
-            response = client.ExecuteGet(request);
+            httpResponse = httpClient.ExecuteGet(httpRequest);
         }
 
         public void PostCall(){
-            response = client.ExecutePost(request);
+            httpResponse = httpClient.ExecutePost(httpRequest);
         }
 
         public void PutCall(){
-            response = client.ExecutePut(request);
+            httpResponse = httpClient.ExecutePut(httpRequest);
         }
 
         public void DeleteCall(){
-            response = client.Delete(request);
+            httpResponse = httpClient.Delete(httpRequest);
         }
 
-        public void checkOKStatusCode(){
-            int respCode = (int)response.StatusCode;
+        public void CheckOKStatusCode(){
+            int respCode = (int)httpResponse.StatusCode;
             Assert.Equal(200, respCode);
         }
 
-        public void checkNotFoundStatusCode(){
-            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        public void CheckNotFoundStatusCode(){
+            Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
         }
 
-        public void checkStatusCode(int code){
-            int respCode = (int)response.StatusCode;
+        public void CheckStatusCode(int code){
+            int respCode = (int)httpResponse.StatusCode;
             Assert.Equal(code, respCode);
         }
 
-        public void checkOKStatusCode(HttpStatusCode code){
-           Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        public void CheckOKStatusCode(HttpStatusCode code){
+           Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
         }
 
-        public void checkStatusCode(HttpStatusCode code){
-            Assert.Equal(code, response.StatusCode);
+        public void CheckStatusCode(HttpStatusCode code){
+            Assert.Equal(code, httpResponse.StatusCode);
         }
 
-        public object respContent(){
-            return response.Content;
+        public object RespContent(){
+            return httpResponse.Content;
         }
 
-        public void validateRespFields(string name, string job){
-            dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
+        public void ValidateRespFields(string name, string job){
+            dynamic jsonResponse = JsonConvert.DeserializeObject(httpResponse.Content);
             var respName = jsonResponse.name.ToString();
             var respJob = jsonResponse.job.ToString();
             Assert.Equal(name, respName);

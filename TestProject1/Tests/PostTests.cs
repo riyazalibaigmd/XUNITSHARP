@@ -1,41 +1,35 @@
 using TestProject1.Utils;
-using System;
-using System.IO;
-using System.Collections.Generic;
 
 namespace TestProject1
 {   
     public class PostTests
     {
-        public static string data = Constants.PostData;
-        public static IEnumerable<object[]> _testData = TestDataHelper.GetTestData(data);
-
-        public static string createData = Constants.PostCreateData;
-        public static IEnumerable<object[]> _createData = TestDataHelper.GetTestData(createData);
+        public static IEnumerable<object[]> testData = TestDataHelper.GetTestData(Constants.PostData);
+        public static IEnumerable<object[]> createData = TestDataHelper.GetTestData(Constants.PostCreateData);
 
         RestActions restActions = new RestActions();
 
         [Theory]
-        [MemberData(nameof(_testData))]
+        [MemberData(nameof(testData))]
         public void PostTestParameterized(TestData data)
         {
-            restActions.setBaseURL(data.param1);
-            restActions.AddHeader("Content-Type", "application/json");
+            restActions.SetBaseURL(data.param1);
+            restActions.AddHeader(data.headerName, data.headerValue);
             restActions.AddBody(new { data.email, data.password });
             restActions.PostCall();
-            restActions.checkStatusCode(data.code);
+            restActions.CheckStatusCode(data.code);
         }
 
         [Theory]
-        [MemberData(nameof(_createData))]
+        [MemberData(nameof(createData))]
         public void PostCreateParameterized(TestData data)
         {
-            restActions.setBaseURL(data.param1);
-            restActions.AddHeader("Content-Type", "application/json");
+            restActions.SetBaseURL(data.param1);
+            restActions.AddHeader(data.headerName, data.headerValue);
             restActions.AddBody(new { data.name, data.job });
             restActions.PostCall();
-            restActions.checkStatusCode(data.code);
-            restActions.validateRespFields(data.name, data.job);
+            restActions.CheckStatusCode(data.code);
+            restActions.ValidateRespFields(data.name, data.job);
         }
     }
 }

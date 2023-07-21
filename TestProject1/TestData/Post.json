@@ -3,24 +3,32 @@
         "param1": "register",
         "email": "eve.holt@reqres.in",
         "password": "pistol",
+        "headerName": "Content-Type",
+        "headerValue": "application/json",
         "code": 200
     },
     {
         "param1": "register",
         "email": "sydney@fife",
         "password": "",
+        "headerName": "Content-Type",
+        "headerValue": "application/json",
         "code": 400
     },
     {
         "param1": "login",
         "email": "eve.holt@reqres.in",
         "password": "cityslicka",
+        "headerName": "Content-Type",
+        "headerValue": "application/json",
         "code": 200
     },
     {
         "param1": "login",
         "email": "peter@klaven",
         "password": "",
+        "headerName": "Content-Type",
+        "headerValue": "application/json",
         "code": 400
     }
 ]

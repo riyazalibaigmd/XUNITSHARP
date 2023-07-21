@@ -3,6 +3,8 @@
         "param1": "users",
         "name": "morpheus",
         "job": "leader",
+        "headerName": "Content-Type",
+        "headerValue": "application/json",
         "code": 201
     }
 ]

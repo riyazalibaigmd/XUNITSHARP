@@ -1,23 +1,20 @@
 using TestProject1.Utils;
-using System;
-using System.IO;
-using System.Collections.Generic;
 
 namespace TestProject1
 {   
     public class DeleteTests
     {
-        public static string data = Constants.DeleteData;
-        public static IEnumerable<object[]> _testData = TestDataHelper.GetTestData(data);
+        public static IEnumerable<object[]> testData = TestDataHelper.GetTestData(Constants.DeleteData);
         RestActions restActions = new RestActions();
 
         [Theory]
-        [MemberData(nameof(_testData))]
+        [MemberData(nameof(testData))]
         public void GetDeleteParameterized(TestData data)
         {
-            restActions.setBaseURL(data.param1, data.param2);
+            restActions.SetBaseURL(data.param1, data.param2);
+            restActions.AddHeader(data.headerName, data.headerValue);
             restActions.DeleteCall();
-            restActions.checkStatusCode(data.code);
+            restActions.CheckStatusCode(data.code);
         }
     }
 }
