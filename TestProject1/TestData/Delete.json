@@ -1,0 +1,9 @@
+[
+    {
+        "param1": "users",
+        "param2": "2",
+        "headerName": "Accept",
+        "headerValue": "*/*",
+        "code": 204
+    }
+]
